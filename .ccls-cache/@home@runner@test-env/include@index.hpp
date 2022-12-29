@@ -10,3 +10,4 @@
 
 //Custom headers
 #include "configuration.hpp" //Needed for importing config settings
+#include "boat.hpp" //import boat classes/functionality
