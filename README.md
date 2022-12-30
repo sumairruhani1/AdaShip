@@ -1,7 +1,10 @@
 # Adaship
 
 ## The problem
+
 I was tasked with creating a game called AdaShip which is a simple spinoff of the classical Battleship game.
+
+pIn this project, I have implemented a simple terminal-based version of the classic board game BattleShips. Players take turns trying to sink each other's ships by guessing their positions on a grid. The first player to sink all of the opponent's ships wins the game.
 
 My program consists of two classes: `Boat` and `Board`.
 
@@ -39,6 +42,26 @@ The `Board` class has several member functions:
 - `shoot` takes a string representing the position of the cell on the game board that is being targeted, and returns a boolean indicating whether a ship was hit at that cell.
 - `allShipsSunk` returns a boolean indicating whether all ships on the game board have been sunk.
 
+## Challenge outline
+
+I chose to create a battleship game using C++. This game would need to have an assortment of features for its MVP, and I have noted these down on my plan document (linked below).
+
+### My Plan
+
+[Link to my plan](https://docs.google.com/document/d/13UaV7jSU51CJ9lkhAKQ08gO38FP95F_x_0V8RdKht04/edit?usp=sharing)
+
+I created a bullet pointed list of all of the features I needed to add to my Battleships game in order to bring it to a standard that I deemed acceptable.
+
+Once I had implemented each feature in that list I would highlight it green and I could move on to the next feature.
+
+I also created a very brief outline of my planned classes (Boat, Board, Cell) and what member functions/variables they would need to include. I placed any notes of my plans into this document.
+
+There is a diagram of all the different states the game will go through while the user is playing, which was present to help me remember what was next in the game flow.
+
+I opted for an agile approach while developing my program, so there is very little documentation available in my plan.
+
+All epics were decomposed into features that were added into the bullet point list in my plan document, and I used this for tracking my progress on the games development. Once all the criteria in the game was fulfilled, then the game could be said to be in a working and functioning state. (Though this is not accounting for the quality of the implementation)
+
 ## Good programming practices demonstrated in this program
 
 - The code follows a consistent indentation style and uses descriptive variable names, making it easy to read and understand.
@@ -52,3 +75,31 @@ The `Board` class has several member functions:
 - The program uses a `mt19937` random number generator from the `random` library to randomly place the ships on the game board, adding an element of chance to the game.
 
 Overall, this program demonstrates good programming standards and practices by following a clear and organized structure, using appropriate data structures and algorithms, and handling user input in a user-friendly and flexible way.
+
+## Areas for Improvement
+
+There are a few areas in which the BattleShips program could be improved:
+
+- User input validation: Currently, the program does not validate user input very thoroughly, and it is possible for players to enter invalid or inappropriate input that could cause the program to crash or behave unexpectedly. Adding more robust input validation checks could help to prevent these issues.
+
+- Game mechanics: The current implementation of the game mechanics is relatively simple and does not include features such as multiple types of ships with different sizes and properties, or more advanced strategies such as allowing players to place their ships on the board in different configurations. Adding these features could make the game more interesting and challenging.
+
+- User interface: The current user interface is very basic and consists of simple text-based prompts and inputs. Improving the user interface, for example by using a more visually appealing layout or by adding support for graphical displays, could make the game more enjoyable to play.
+
+- Code organization and modularity: The current code could be organized and structured more effectively, for example by separating the game logic from the user interface, or by breaking up large functions into smaller, more modular ones. This could make the code easier to understand and maintain.
+
+I had developed my program with the intention of keeping the various different classes and features in separate header and code files, however various bugs had plagued my code before the assignment deadline, forcing me to keep my code in a monolithic structure with all of the code in main.cpp
+
+## Potential Future Improvements
+
+Here are some potential future improvements I could add if I get the opportunity to work on this program again:
+
+- General robustness: Making the current program more robust by facilitating and handling erroneous inputs. Likewise, fixing all potential present bugs in the program.
+
+- Player 2 opponent: Currently, the program only allows for one computer to play against a human. Adding an option for a player to play against another and make strategic guesses could make the game more challenging and exciting to play.
+
+- Customizable board sizes: Allowing players to select the size of the game board could add an additional level of strategy to the game and make it more customizable.
+
+- More advanced game mechanics: Adding more advanced game mechanics, such as special abilities or power-ups that can be used during play, could make the game more dynamic and varied.
+
+- Improved user interface: Improving the user interface, for example by adding support for graphics or visual effects, could make the game more visually appealing and immersive.

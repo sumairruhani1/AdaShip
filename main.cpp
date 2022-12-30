@@ -486,6 +486,7 @@ void playGame(Board &playerBoard, Board &computerBoard,
 
 int menuOptions() {
   int option;
+  tutorialInstructions();
   std::cout << "Menu:" << std::endl;
   std::cout << "1. One Player vs Computer" << std::endl;
   std::cout << "2. Quit Game" << std::endl << std::endl;
@@ -504,9 +505,9 @@ int menuOptions() {
   playGame(playerBoard, computerBoard, playerShips, computerShips);
     return 0;
   } else if (option == 2) {
-    std::exit;
+    return 0;
   } else {
-    std::cout << ("You haven't entered a valid option");
+    std::cout << "Invalid option. " << std::endl;
     return 0;
   }
 }
