@@ -11,6 +11,7 @@
 #include <iomanip>
 #include <vector>
 #include <cstdlib>
+#include <random>
 
 //Custom headers
 #include "configuration.hpp" //Needed for importing config settings
