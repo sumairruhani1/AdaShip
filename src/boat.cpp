@@ -1,17 +1,10 @@
-#include "../include/index.hpp"
+// #include "../include/index.hpp"
 
-// int Fleet::getBoatCount() { return boatCount; }
+// Boat::Boat(int length, const std::string &name, bool isPlaced)
+//     : length(length), name(name), isPlaced(isPlaced) {}
 
-// Boat::Boat(int Size, std::string BoatType) {
-//   size = Size;
-//   boatType = BoatType;
-// };
-
-// std::string Boat::getType() { return boatType; }
-// void Boat::setType(std::string BoatType) { this->boatType = BoatType; }
-// void Boat::getDetails() {
-//   std::cout << boatType << " Size: " << size << std::endl;
+// void Boat::resetShips(std::vector<Boat> &boats) {
+//   for (Boat &boat : boats) {
+//     boat.isPlaced = false;
+//   }
 // }
-// // sget health
-// // sget size
-// // sget coords

@@ -1,6 +1,9 @@
-# Battleship
+# Adaship
 
-This program implements a simple version of the classic board game Battleship. It consists of two classes: `Boat` and `Board`.
+## The problem
+I was tasked with creating a game called AdaShip which is a simple spinoff of the classical Battleship game.
+
+My program consists of two classes: `Boat` and `Board`.
 
 ## Boat
 
@@ -24,7 +27,7 @@ It has a nested class `Cell`, which represents a cell on the game board. The `Ce
 - `isShip`: a boolean indicating whether there is a ship at that cell
 - `isHit`: a boolean indicating whether that cell has been hit by a shot
 
-The `Board` class has a constructor that initializes a 2D vector of `Cell` objects to represent the game board, with all cells initially having `isShip` set to `false` and `isHit` set to `false`.
+The `Board` class has a constructor that initializes a 2D vector of `Cell` objects to represent the game board, with all cells initially having `isShip` set to `false` and `isHit`
 
 The `Board` class has several member functions:
 
@@ -39,4 +42,13 @@ The `Board` class has several member functions:
 ## Good programming practices demonstrated in this program
 
 - The code follows a consistent indentation style and uses descriptive variable names, making it easy to read and understand.
-- The `Boat` and `Board` classes are separated into their own header and implementation files, with the implementation file `#include`ing
+- The `Boat` and `Board` classes are separated into their own header and implementation files, with the implementation file `#include`ing the header file. This helps to organize the code and minimize dependencies between different parts of the program.
+- The `Boat` and `Board` classes have clear and well-defined interfaces, with each class having a clear purpose and responsibility. This makes it easy to understand the role of each class in the overall program.
+- The `Board` class uses a 2D vector to represent the game board, which is an efficient and flexible data structure for storing the state of the game board.
+- The `plotShip` function takes a string representing the position of the top-left cell of the ship and parses it to extract the row and column indices. This allows the function to accept user input in a convenient and user-friendly format, while still being able to easily extract the necessary information.
+- The `shoot` function takes a string representing the position of the targeted cell and parses it to extract the row and column indices. This allows the function to accept user input in a convenient and user-friendly format, while still being able to easily extract the necessary information.
+- The `printBoard` function uses the `setw` function from the `iomanip` library to align the output and make it more visually appealing.
+- The `main` function includes a loop that continues until all ships on the game board have been sunk, allowing the game to continue until one player wins.
+- The program uses a `mt19937` random number generator from the `random` library to randomly place the ships on the game board, adding an element of chance to the game.
+
+Overall, this program demonstrates good programming standards and practices by following a clear and organized structure, using appropriate data structures and algorithms, and handling user input in a user-friendly and flexible way.

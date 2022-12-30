@@ -1,17 +1,5 @@
 #include "./include/index.hpp"
 
-#include <algorithm>
-#include <cstdlib>
-#include <fstream>
-#include <iomanip>
-#include <iostream>
-#include <limits>
-#include <random>
-#include <sstream>
-#include <stdlib.h>
-#include <string>
-#include <vector>
-
 // Boat class
 class Boat {
 public:
@@ -244,55 +232,6 @@ private:
 int Board::boardHeight; // initialize the board height
 int Board::boardWidth;  // initialize the board width
 
-void importBoardConfigData(std::string filename, int &height, int &width) {
-  // file handling for adaship_config.ini file
-  std::ifstream file;
-  file.open(filename); // open file
-  std::string line;
-  if (file) {
-    while (std::getline(file, line)) {
-      line.erase(std::remove_if(line.begin(), line.end(), isspace), line.end());
-
-      if (line.find("Board") != -1) {
-        int startPointer = line.find(":") + 1; // Initial pointer
-        int endPointer = line.find("x") + 1;   // Secondary pointer
-        int diff = endPointer - startPointer;  // string difference
-        std::string heightStr = line.substr(startPointer, diff - 1);
-        std::string widthStr = line.substr(endPointer);
-        height = std::stoi(heightStr);
-        width = std::stoi(widthStr);
-      }
-    }
-  } else {
-    std::cout << "Could not find or open adaship_config.ini" << std::endl;
-  }
-};
-
-// import boat data from config file
-void importBoatConfigData(const std::string &filename,
-                          std::vector<Boat> &boats) {
-  // file handling for adaship_config.ini file
-  std::ifstream file;
-  file.open(filename); // open file
-  std::string line;
-  if (file) {
-    while (std::getline(file, line)) {
-      line.erase(std::remove_if(line.begin(), line.end(), isspace), line.end());
-
-      if (line.find("Boat") != -1) {
-        int startPointer = line.find(":") + 1; // Initial pointer
-        int endPointer = line.find(",") + 1;   // Secondary pointer
-        int diff = endPointer - startPointer;  // string difference
-        std::string name = line.substr(startPointer, diff - 1);
-        int length = std::stoi(line.substr(endPointer));
-        boats.emplace_back(length, name, false);
-      }
-    }
-  } else {
-    std::cout << "Could not find or open adaship_config.ini" << std::endl;
-  }
-}
-
 // function prototypes
 void setupBoards(Board &playerBoard, Board &computerBoard,
                  std::vector<Boat> &playerShips,
@@ -397,6 +336,66 @@ bool plotPlayerShips(std::vector<Boat> &boats, Board &board) {
   }
 }
 
+void tutorialInstructions() {
+  std::cout << "Welcome to AdaShip!" << std::endl <<std::endl;
+  std::cout 
+    << "AdaShip is a spinoff version of the classic battleships game and the rules are simple. \n"
+    << "Firstly, you and your opponent will tactically place ships on your boards. Following this you \n"
+    << "take turns firing torpedoes at your opponents ships with the intent of hitting all of theirs, \n"
+    << "while not getting hit yourself. \n\n"
+    << "If you destroy all your opponents ships before they can destroy yours then you have won." << std::endl << std::endl;
+}
+
+// import board data from config file
+void importBoardConfigData(std::string filename, int &height, int &width) {
+  // file handling for adaship_config.ini file
+  std::ifstream file;
+  file.open(filename); // open file
+  std::string line;
+  if (file) {
+    while (std::getline(file, line)) {
+      line.erase(std::remove_if(line.begin(), line.end(), isspace), line.end());
+
+      if (line.find("Board") != -1) {
+        int startPointer = line.find(":") + 1; // Initial pointer
+        int endPointer = line.find("x") + 1;   // Secondary pointer
+        int diff = endPointer - startPointer;  // string difference
+        std::string heightStr = line.substr(startPointer, diff - 1);
+        std::string widthStr = line.substr(endPointer);
+        height = std::stoi(heightStr);
+        width = std::stoi(widthStr);
+      }
+    }
+  } else {
+    std::cout << "Could not find or open adaship_config.ini" << std::endl;
+  }
+};
+
+// import boat data from config file
+void importBoatConfigData(const std::string &filename,
+                          std::vector<Boat> &boats) {
+  // file handling for adaship_config.ini file
+  std::ifstream file;
+  file.open(filename); // open file
+  std::string line;
+  if (file) {
+    while (std::getline(file, line)) {
+      line.erase(std::remove_if(line.begin(), line.end(), isspace), line.end());
+
+      if (line.find("Boat") != -1) {
+        int startPointer = line.find(":") + 1; // Initial pointer
+        int endPointer = line.find(",") + 1;   // Secondary pointer
+        int diff = endPointer - startPointer;  // string difference
+        std::string name = line.substr(startPointer, diff - 1);
+        int length = std::stoi(line.substr(endPointer));
+        boats.emplace_back(length, name, false);
+      }
+    }
+  } else {
+    std::cout << "Could not find or open adaship_config.ini" << std::endl;
+  }
+}
+
 // function to setup the game boards and ships
 void setupBoards(Board &playerBoard, Board &computerBoard,
                  std::vector<Boat> &playerShips,
@@ -485,8 +484,16 @@ void playGame(Board &playerBoard, Board &computerBoard,
   }
 }
 
-int main() {
-  // initialize the boards and ships
+int menuOptions() {
+  int option;
+  std::cout << "Menu:" << std::endl;
+  std::cout << "1. One Player vs Computer" << std::endl;
+  std::cout << "2. Quit Game" << std::endl << std::endl;
+  std::cout << "Enter option: ";
+  std::cin >> option;
+
+  if (option == 1) {
+    // initialize the boards and ships
   importBoardConfigData("adaship_config.ini", Board::boardHeight,
                         Board::boardWidth);
   Board playerBoard, computerBoard;
@@ -495,6 +502,16 @@ int main() {
 
   // play the game
   playGame(playerBoard, computerBoard, playerShips, computerShips);
+    return 0;
+  } else if (option == 2) {
+    std::exit;
+  } else {
+    std::cout << ("You haven't entered a valid option");
+    return 0;
+  }
+}
 
+int main() {
+  menuOptions();
   return 0;
 }
